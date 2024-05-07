@@ -89,7 +89,7 @@ namespace Microsoft.BotBuilderSamples
             }
             else
             {
-                services.AddSingleton(new OpenAIClient(new Uri(configuration.GetValue<string>("AOAI_API_ENDPOINT")), azureCredentials));
+                IServiceCollection serviceCollection = services.AddSingleton(new OpenAIClient(new Uri(configuration.GetValue<string>("AOAI_API_ENDPOINT")), azureCredentials));
                 services.AddSingleton(new AzureOpenAITextEmbeddingGenerationService(configuration.GetValue<string>("AOAI_EMBEDDINGS_MODEL"), configuration.GetValue<string>("AOAI_API_ENDPOINT"), azureCredentials));
             }
             if (!configuration.GetValue<string>("DOCINTEL_API_ENDPOINT").IsNullOrEmpty())
